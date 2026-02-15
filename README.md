@@ -10,6 +10,23 @@ This system was deployed to streamline financial reporting by consolidating mult
 
 Manual aggregation of Excel files for insurance, patient, and monthly financial reporting was time-consuming, error-prone, and inconsistent. This automation standardizes and speeds up the process.
 
+## Usage
+
+- User runs the PowerShell script to aggregate Excel financial data.
+- The script reads multiple workbooks (Jan–Jul, Jul–Dec, Self Pay), calculates insurance rollups, patient balances, and monthly posted amounts, and writes three summary Excel files to the output folder.
+- Optional: The script can be scheduled using Windows Task Scheduler to run automatically.
+
+Sample output files:
+
+- Insurance_Rollup.xlsx  
+  - Columns: Insurance, Billed, Paid, Unpaid
+
+- MRN_Owes_Rollup.xlsx  
+  - Columns: MRN, Owes
+
+- Monthly_Income.xlsx  
+  - Columns: Month, Income
+
 ## Tech Stack
 
 - PowerShell
