@@ -69,11 +69,11 @@ Follow these steps to get the Annual Rollup Automation running:
 3. Prepare Your Input Files
 
 Ensure you have the following Excel files ready:
-
+```
    Jan–Jul data file
    Jul–Dec data file
    Self Pay data file
-
+```
 Place them in a folder you can easily navigate to when running the script.
 
 4. Locate the Script
