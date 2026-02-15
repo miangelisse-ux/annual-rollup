@@ -66,7 +66,7 @@ Follow these steps to get the Annual Rollup Automation running:
    git clone https://github.com/miangelisse-ux/annual-rollup.git
    cd annual-rollup
    
-3. Prepare Your Input Files
+3. **Prepare Your Input Files**
 
 Ensure you have the following Excel files ready:
 ```
@@ -76,19 +76,19 @@ Ensure you have the following Excel files ready:
 ```
 Place them in a folder you can easily navigate to when running the script.
 
-4. Locate the Script
+4. **Locate the Script**
 
 The main script is located at:
 ```
 src/annual_rollup.ps1
 ```
-5. Adjust PowerShell Execution Policy (if needed)
+5. **Adjust PowerShell Execution Policy (if needed)**
 
 By default, PowerShell may block running scripts. The command below temporarily bypasses this restriction for the session:
 ```
 powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
 ```
-6. Example File Paths
+6. **Example File Paths**
 
 When prompted, provide full paths to your Excel files, for example:
 ```
@@ -100,7 +100,7 @@ Also provide a folder path for output reports, e.g.:
 ```
 C:\Users\YourName\Documents\RollupOutput
 ```
-7. Run the Script
+7. **Run the Script**
 
 Open PowerShell and execute:
 ```
