@@ -117,7 +117,8 @@ Also provide a folder path for output reports, e.g.:
 ```
 C:\Users\YourName\Documents\RollupOutput
 ```
-7. **Run the Script**
+
+## How to Run
 
 Open PowerShell and execute:
 ```
