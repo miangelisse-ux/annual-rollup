@@ -62,8 +62,14 @@ Manual aggregation of Excel files for insurance, patient, and monthly financial 
    ```
    cd clinic-rollup-automation
 
-3. Place Excel Files in a convenient folder.
-4. The main script is located at
+3. Ensure you have the following prerequisites:
+```
+Windows OS with PowerShell 5.1 or later
+Microsoft Excel installed
+PowerShell execution policy allows running scripts (we will bypass it when running)
+```
+4. Place your input Excel files
+5. The main script is located at:
  ```
 src/annual_rollup.ps1.
 ```
