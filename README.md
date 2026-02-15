@@ -63,11 +63,13 @@ Manual aggregation of Excel files for insurance, patient, and monthly financial 
    cd clinic-rollup-automation
 
 3. Place Excel Files in a convenient folder.
-4. The main script is located at src/annual_rollup.ps1.
+4. The main script is located at
+ ```
+src/annual_rollup.ps1.
 
 ## How to Run
 
 Open Powershell and execute:
-
+```
 powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
 
