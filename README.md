@@ -84,15 +84,16 @@ src/annual_rollup.ps1
 5. Adjust PowerShell Execution Policy (if needed)
 
 By default, PowerShell may block running scripts. The command below temporarily bypasses this restriction for the session:
-
+```
 powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
-Example File Paths
+```
+6. Example File Paths
 
-6. When prompted, provide full paths to your Excel files, for example:
+When prompted, provide full paths to your Excel files, for example:
 
-C:\Users\YourName\Documents\Data\Jan-Jul.xlsx
-C:\Users\YourName\Documents\Data\Jul-Dec.xlsx
-C:\Users\YourName\Documents\Data\SelfPay.xlsx
+   C:\Users\YourName\Documents\Data\Jan-Jul.xlsx
+   C:\Users\YourName\Documents\Data\Jul-Dec.xlsx
+   C:\Users\YourName\Documents\Data\SelfPay.xlsx
 
 Also provide a folder path for output reports, e.g.:
 ```
