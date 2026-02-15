@@ -54,28 +54,60 @@ Manual aggregation of Excel files for insurance, patient, and monthly financial 
 
 ## Setup
 
-1. Clone this repository:
+Follow these steps to get the Annual Rollup Automation running:
+
+1. **Requirements**
+   - Windows operating system
+   - Microsoft Excel installed
+   - PowerShell 5.0 or higher
+
+2. **Clone the Repository**
    ```bash
-   git clone https://github.com/miangelisse-ux/clinic-rollup-automation.git
+   git clone https://github.com/miangelisse-ux/annual-rollup.git
+   cd annual-rollup
+3. Prepare Your Input Files
 
-2. Navigate to the Project Folder:
-   ```
-   cd clinic-rollup-automation
+Ensure you have the following Excel files ready:
 
-3. Ensure you have the following prerequisites:
-```
-Windows OS with PowerShell 5.1 or later
-Microsoft Excel installed
-PowerShell execution policy allows running scripts (we will bypass it when running)
-```
-4. Place your input Excel files
-5. The main script is located at:
- ```
-src/annual_rollup.ps1.
-```
-## How to Run
+   Jan–Jul data file
+   Jul–Dec data file
+   Self Pay data file
 
-Open Powershell and execute:
+Place them in a folder you can easily navigate to when running the script.
+
+4. Locate the Script
+
+The main script is located at:
+```
+src/annual_rollup.ps1
+```
+5. Adjust PowerShell Execution Policy (if needed)
+
+By default, PowerShell may block running scripts. The command below temporarily bypasses this restriction for the session:
+
+powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
+Example File Paths
+
+6. When prompted, provide full paths to your Excel files, for example:
+
+C:\Users\YourName\Documents\Data\Jan-Jul.xlsx
+C:\Users\YourName\Documents\Data\Jul-Dec.xlsx
+C:\Users\YourName\Documents\Data\SelfPay.xlsx
+
+Also provide a folder path for output reports, e.g.:
+```
+C:\Users\YourName\Documents\RollupOutput
+```
+7. Run the Script
+
+Open PowerShell and execute:
 ```
 powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
+```
+Follow the prompts to enter file paths and output folder.
 
+Once complete, the script will generate three summary Excel files in the output folder:
+
+   Insurance_Rollup.xlsx
+   MRN_Owes_Rollup.xlsx
+   Monthly_Income.xlsx
