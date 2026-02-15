@@ -65,6 +65,7 @@ Follow these steps to get the Annual Rollup Automation running:
    ```bash
    git clone https://github.com/miangelisse-ux/annual-rollup.git
    cd annual-rollup
+   
 3. Prepare Your Input Files
 
 Ensure you have the following Excel files ready:
@@ -90,11 +91,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
 6. Example File Paths
 
 When prompted, provide full paths to your Excel files, for example:
-
+```
    C:\Users\YourName\Documents\Data\Jan-Jul.xlsx
    C:\Users\YourName\Documents\Data\Jul-Dec.xlsx
    C:\Users\YourName\Documents\Data\SelfPay.xlsx
-
+```
 Also provide a folder path for output reports, e.g.:
 ```
 C:\Users\YourName\Documents\RollupOutput
@@ -108,7 +109,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
 Follow the prompts to enter file paths and output folder.
 
 Once complete, the script will generate three summary Excel files in the output folder:
-
+```
    Insurance_Rollup.xlsx
    MRN_Owes_Rollup.xlsx
    Monthly_Income.xlsx
