@@ -1,133 +1,196 @@
-# Annual Rollup Automation
+# Annual Rollup Automation System
 
-Production-deployed PowerShell automation for aggregating and summarizing financial data across multiple Excel workbooks, generating insurance, patient, and monthly rollups.
+Production-deployed PowerShell automation system for aggregating and summarizing financial data across multiple Excel workbooks, generating structured insurance, patient, and monthly financial rollups.
 
-## Production Use
+---
 
-This system was deployed to streamline financial reporting by consolidating multiple Excel data sources into summarized reports. It reduced manual spreadsheet work, ensured consistency, and generated ready-to-use summary files.
+## 🧠 System Overview
 
-## Problem
+This system automates financial reporting by consolidating multiple Excel data sources into structured summary outputs.
 
-Manual aggregation of Excel files for insurance, patient, and monthly financial reporting was time-consuming, error-prone, and inconsistent. This automation standardizes and speeds up the process.
+It replaces manual spreadsheet aggregation with a deterministic, script-driven workflow that ensures consistency, accuracy, and repeatability.
 
-## Usage
+---
 
-- User runs the PowerShell script to aggregate Excel financial data.
-- The script reads multiple workbooks (Jan–Jul, Jul–Dec, Self Pay), calculates insurance rollups, patient balances, and monthly posted amounts, and writes three summary Excel files to the output folder.
-- Optional: The script can be scheduled using Windows Task Scheduler to run automatically.
+## 🎯 Problem It Solves
 
-Sample output files:
+Manual financial reporting across multiple Excel files leads to:
 
-- Insurance_Rollup.xlsx  
-  - Columns: Insurance, Billed, Paid, Unpaid
+- Time-consuming spreadsheet consolidation  
+- Inconsistent formatting across reports  
+- Human error in calculations and rollups  
+- Repetitive monthly/annual reporting tasks  
+- Lack of standardized output structure  
 
-- MRN_Owes_Rollup.xlsx  
-  - Columns: MRN, Owes
+This system automates the full aggregation pipeline.
 
-- Monthly_Income.xlsx  
-  - Columns: Month, Income
+---
 
-## Tech Stack
+## 🏗 System Architecture
 
-- PowerShell
+```mermaid
+flowchart TD
+
+A[Excel Data Sources] --> B[PowerShell Processing Engine]
+B --> C[Excel COM Interop Layer]
+
+C --> D[Data Extraction Module]
+D --> E[Aggregation Engine]
+
+E --> F1[Insurance Rollup Generator]
+E --> F2[MRN Balance Processor]
+E --> F3[Monthly Income Calculator]
+
+F1 --> G1[Insurance_Rollup.xlsx]
+F2 --> G2[MRN_Owes_Rollup.xlsx]
+F3 --> G3[Monthly_Income.xlsx]
+
+G1 --> H[Output Directory]
+G2 --> H
+G3 --> H
+```
+
+---
+
+## ⚙️ Core Features
+
+- Processes multiple Excel workbooks (Jan–Jul, Jul–Dec, Self Pay)
+- Aggregates insurance billing data
+- Calculates patient MRN balances
+- Computes monthly income summaries
+- Handles inconsistent or missing Excel data
+- Auto-formats output spreadsheets
+- Generates structured financial reports
+- Fully automated execution via PowerShell
+
+---
+
+## 🧠 System Workflow
+
+1. User provides input Excel file paths  
+2. PowerShell script initializes Excel COM session  
+3. Data is extracted from multiple workbooks  
+4. Headers are normalized for consistency  
+5. Aggregation engine processes:
+   - Insurance rollups (Billed / Paid / Unpaid)
+   - MRN outstanding balances
+   - Monthly income totals  
+6. Structured output files are generated  
+7. Excel session is safely closed  
+8. Output files are saved to target directory  
+
+---
+
+## ⚙️ Engineering Design
+
+### Processing Model
+- Sequential batch processing of Excel sources
+- Deterministic aggregation logic
+- Memory-safe Excel COM handling
+
+### Data Handling
+- Dynamic header detection
+- Input normalization layer
+- Defensive parsing for inconsistent rows
+
+### Output Layer
+- Standardized Excel report generation
+- Auto-formatted headers and numeric fields
+- Clean export structure for downstream use
+
+---
+
+## 🧩 System Components
+
+- **PowerShell Execution Engine** → Orchestrates workflow
+- **Excel COM Interop Layer** → Controls Excel programmatically
+- **Data Extraction Module** → Reads raw workbook data
+- **Aggregation Engine** → Performs rollup calculations
+- **Report Generator** → Produces structured outputs
+
+---
+
+## 🛡 Reliability Considerations
+
+- Safe Excel session teardown to prevent memory leaks  
+- Error handling for corrupted or missing files  
+- Graceful failure on malformed datasets  
+- Defensive parsing of inconsistent spreadsheet formats  
+- Isolation of processing steps to prevent cascading failures  
+
+---
+
+## 📈 Scaling Limitations
+
+This system is optimized for:
+
+- Local Windows environments  
+- Medium-sized Excel datasets  
+- Batch processing workflows  
+
+Constraints include:
+
+- Excel COM dependency (Windows-only)
+- Sequential processing model
+- Limited parallel execution capability
+
+---
+
+## 🔄 Execution Flow
+
+```mermaid
+sequenceDiagram
+participant U as User
+participant PS as PowerShell Script
+participant EX as Excel COM
+participant FS as File System
+
+U->>PS: Run script with file paths
+PS->>EX: Open Excel sessions
+EX->>PS: Load workbook data
+PS->>PS: Process + aggregate data
+PS->>EX: Generate output files
+PS->>FS: Save Excel reports
+FS-->>U: Output reports ready
+```
+
+---
+
+## 🛠 Tech Stack
+
+- PowerShell 5+
 - Microsoft Excel COM Interop
-- Windows environment
+- Windows Operating System
+- File system-based data processing
 
-## Core Features
+---
 
-- Reads multiple Excel workbooks (Jan–Jul, Jul–Dec, Self Pay)
-- Aggregates insurance, patient MRN, and monthly posted amounts
-- Handles blank or inconsistent data
-- Generates Excel summary reports
-- Automatically formats numeric columns
-- Auto-fits columns and bolds headers
+## 📌 Output Files
 
-## System Logic Overview
+Generated reports include:
 
-1. User provides paths to input Excel files and output directory.
-2. Script opens Excel via COM automation (invisible, no alerts).
-3. Extracts headers and normalizes them for reliable processing.
-4. Aggregates:
-   - Insurance rollups (Billed, Paid, Unpaid)
-   - Patient MRN balances
-   - Monthly posted amounts
-5. Writes three summary Excel files to the output directory.
-6. Closes all Excel instances safely to prevent resource leaks.
+- **Insurance_Rollup.xlsx**
+  - Insurance | Billed | Paid | Unpaid
 
-## Engineering Considerations
+- **MRN_Owes_Rollup.xlsx**
+  - MRN | Outstanding Balance
 
-- COM automation used for programmatic Excel control
-- Defensive error handling to avoid corrupting Excel sessions
-- Dynamic header detection to handle slight variations in input files
-- Auto-formatting ensures professional report output
+- **Monthly_Income.xlsx**
+  - Month | Total Income
 
-## Future Improvements
+---
 
-- Add logging for each processed file
-- Support more dynamic input folder structures
-- Optional email delivery of summary files
-- GUI wrapper for easier user interaction
-- Integration with a database for long-term tracking
+## 🚀 Future Improvements
 
-## Setup
+- Add structured logging system  
+- Replace Excel COM with EPPlus or closedXML (cross-platform support)  
+- Add GUI wrapper for non-technical users  
+- Automate scheduling via Task Scheduler integration  
+- Add database-backed historical tracking  
+- Email report distribution system  
 
-Follow these steps to get the Annual Rollup Automation running:
+---
 
-1. **Requirements**
-   - Windows operating system
-   - Microsoft Excel installed
-   - PowerShell 5.0 or higher
+## 📫 Contact
 
-2. **Clone the Repository**
-   ```bash
-   git clone https://github.com/miangelisse-ux/annual-rollup.git
-   cd annual-rollup
-   
-3. **Prepare Your Input Files**
-
-Ensure you have the following Excel files ready:
-```
-   Jan–Jul data file
-   Jul–Dec data file
-   Self Pay data file
-```
-Place them in a folder you can easily navigate to when running the script.
-
-4. **Locate the Script**
-
-The main script is located at:
-```
-src/annual_rollup.ps1
-```
-5. **Adjust PowerShell Execution Policy (if needed)**
-
-By default, PowerShell may block running scripts. The command below temporarily bypasses this restriction for the session:
-```
-powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
-```
-6. **Example File Paths**
-
-When prompted, provide full paths to your Excel files, for example:
-```
-   C:\Users\YourName\Documents\Data\Jan-Jul.xlsx
-   C:\Users\YourName\Documents\Data\Jul-Dec.xlsx
-   C:\Users\YourName\Documents\Data\SelfPay.xlsx
-```
-Also provide a folder path for output reports, e.g.:
-```
-C:\Users\YourName\Documents\RollupOutput
-```
-
-## How to Run
-
-Open PowerShell and execute:
-```
-powershell -NoProfile -ExecutionPolicy Bypass -File .\src\annual_rollup.ps1
-```
-Follow the prompts to enter file paths and output folder.
-
-Once complete, the script will generate three summary Excel files in the output folder:
-```
-   Insurance_Rollup.xlsx
-   MRN_Owes_Rollup.xlsx
-   Monthly_Income.xlsx
+📧 SURECATCHAUTOMATIONS@GMAIL.COM
